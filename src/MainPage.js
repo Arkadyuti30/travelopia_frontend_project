@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
 import Form from './Form'
+import SuccessBox from './SuccessBox'
 
 
 export default function MainPage() {
@@ -9,7 +10,7 @@ export default function MainPage() {
 			<div id="main-page-header">
 				<h2>Travel. Experience. Live.</h2>
 			</div>
-			<Form/>
+				<SuccessBox/>
 		</div>
 	)
 }
