@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+import FlatButton from './FlatButton'
 
 export default function Form() {
 	return(
@@ -40,6 +41,7 @@ export default function Form() {
 				  			<option value=">9000">>9000</option>
 				  		</select>
 				  	</div>
+				  	<FlatButton buttonText="SUBMIT"/>
 			</form>
 		</div>
 	)
