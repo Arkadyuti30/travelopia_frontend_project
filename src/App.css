@@ -13,6 +13,12 @@
   }
 }
 
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(./fonts/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +41,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  font-family: 'Playfair Display';
+}
+
+#main-page {
+  position: relative; 
+  height: 100vh;
+  width: 100%;
+}
+
+#main-page::before {
+  content: "";
+  background-image: url('./media/boating.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.3;
+}
+
+#main-page-header {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
 }
