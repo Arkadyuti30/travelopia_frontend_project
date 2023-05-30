@@ -1,20 +1,21 @@
-import React from 'react'
+import {React, useEffect} from 'react'
 import './App.css';
 import FlatButton from './FlatButton'
+import Axios from 'axios'
 
 export default function Form() {
 	return(
 		<div id="form">
 			<form id="form-contents">
-				 <input type="text" id="form-name" class="broad-input" name="form-name" placeholder="Enter your name"/>
-				 <input type="text" id="form-email" class="broad-input" name="form-email" placeholder="Enter your email"/>
-				 <select id="form-place" class="broad-input">
+				 <input type="text" id="form-name" class="broad-input" name="form-name" placeholder="Enter your name" required/>
+				 <input type="text" id="form-email" class="broad-input" name="form-email" placeholder="Enter your email" required/>
+				 <select id="form-place" class="broad-input" required>
 				  <option value="" selected disabled hidden>Where do you want to go?</option>
 				  <option value="India">India</option>
 				  <option value="Africa">Africa</option>
 				  <option value="Europe">Europe</option>
 				 </select>
-				 <select id="form-travellers" class="broad-input">
+				 <select id="form-travellers" class="broad-input" required>
 				  	<option value="" selected disabled hidden>Travellers</option>
 				  	<option value="1">1</option>
 				  	<option value="2">2</option>
@@ -28,7 +29,7 @@ export default function Form() {
 				  	</select>
 				  	<div id="budget-wrapper">
 				  		<div id="currency">🇺🇸 USD</div>
-				  		<select id="form-budget">
+				  		<select id="form-budget" required>
 				  			<option value="" selected disabled hidden>Budget</option>
 				  			<option value="1000-2000">1000-2000</option>
 				  			<option value="2000-3000">2000-3000</option>

@@ -175,6 +175,7 @@ select {
   align-items: center;
   font-family: QuickSand;
   font-weight: 800;
+  cursor: pointer;
 }
 
 #flat-button span {
@@ -209,5 +210,5 @@ select {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2
+  background-color: #f2f2f2;
 }
