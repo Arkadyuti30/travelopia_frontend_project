@@ -4,7 +4,7 @@ import './App.css';
 
 export default function FlatButton(props) {
 	return(
-		<div id="flat-button">
+		<div id="flat-button" onClick={props.onClick}>
 			<span>{props.buttonText}</span>
 		</div>
 	)

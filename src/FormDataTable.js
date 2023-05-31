@@ -5,11 +5,11 @@ import Axios from 'axios'
 export default function FormDataTable() {
 	const [data, setData] = useState([])
 	useEffect(() => {
-		Axios.get('http://localhost:1337/all/form/data')
+		Axios.get('https://travel-backend-c90r.onrender.com/forms')
 		.then(res => {
 			console.log(`Got data from server ${res.data}`)
 			setData(res.data)
-		}).catch(err => console.log(`Error: ${err}`))
+		}).catch(err => console.log(`Error while getting data: ${err}`))
 	}, [])
 
 	const tableData = data.map((data, index) => {

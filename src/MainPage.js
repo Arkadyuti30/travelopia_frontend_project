@@ -11,7 +11,7 @@ export default function MainPage() {
 			<div id="main-page-header">
 				<h2>Travel. Experience. Live.</h2>
 			</div>
-				<FormDataTable/>
+				<Form/>
 		</div>
 	)
 }
