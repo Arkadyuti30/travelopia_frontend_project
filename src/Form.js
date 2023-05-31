@@ -3,7 +3,7 @@ import './App.css';
 import FlatButton from './FlatButton'
 import Axios from 'axios'
 
-export default function Form() {
+export default function Form(props, { parentCallback }) {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [place, setPlace] = useState('')
@@ -25,21 +25,30 @@ export default function Form() {
 			alert(`Please select the number of Travellers`)
 		else if(!budget)
 			alert(`Please select the Budget`)
-		else
-		Axios.post('https://travel-backend-c90r.onrender.com/submit/form', {
-			name,
-			email,
-			place,
-			travellers,
-			budget
-		}).then(res => {
-			console.log(`Posted data to server ${JSON.stringify(res)}`)
-			setName('')
-			setEmail('')
-			setPlace('')
-			setTravellers('')
-			setBudget('')
-		}).catch(err => console.log(`Error while posting data: ${JSON.stringify(err)}`))
+		else if (name && email && place && travellers && budget) { // Post data to server only when all data is available + send data to parent component
+			Axios.post('https://travel-backend-c90r.onrender.com/submit/form', {
+				name,
+				email,
+				place,
+				travellers,
+				budget
+			}).then(res => {
+				console.log(`Posted data to server ${JSON.stringify(res)}`)
+				setName('')
+				setEmail('')
+				setPlace('')
+				setTravellers('')
+				setBudget('')
+			}).catch(err => console.log(`Error while posting data: ${JSON.stringify(err)}`))
+
+			// Call the parent callback function
+			// On successful submission of form -> show SuccessBox
+        	props.parentCallback({
+        		showForm: false,
+        		showSuccessBox: true,
+        		showTable: false
+        	});
+		}
 	}
 	return(
 		<div id="form">
@@ -67,7 +76,7 @@ export default function Form() {
 				  	<div id="budget-wrapper">
 				  		<div id="currency">🇺🇸 USD</div>
 				  		<select id="form-budget" value={budget} onChange={(e) => setBudget(e.target.value)} required>
-				  			<option value="" selected disabled hidden>Budget</option>
+				  			<option value="" selected disabled hidden>Budget per person</option>
 				  			<option value="1000-2000">1000-2000</option>
 				  			<option value="2000-3000">2000-3000</option>
 				  			<option value="3000-4000">3000-4000</option>

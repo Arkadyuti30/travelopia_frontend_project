@@ -1,8 +1,9 @@
 import {React, useEffect, useState} from 'react'
 import './App.css';
 import Axios from 'axios'
+import cross_button from './media/cross_button.svg'
 
-export default function FormDataTable() {
+export default function FormDataTable(props, parentCallback) {
 	const [data, setData] = useState([])
 	useEffect(() => {
 		Axios.get('https://travel-backend-c90r.onrender.com/forms')
@@ -11,6 +12,14 @@ export default function FormDataTable() {
 			setData(res.data)
 		}).catch(err => console.log(`Error while getting data: ${err}`))
 	}, [])
+
+	const openSuccessBox = () => {
+		props.parentCallback({
+			showForm: false,
+			showSuccessBox: true,
+			showTable: false
+		});
+	}
 
 	const tableData = data.map((data, index) => {
 		return(
@@ -26,6 +35,9 @@ export default function FormDataTable() {
 	})
 	return(
 		<div id="table-wrapper">
+			<div id="cross-button-container" onClick={openSuccessBox}>
+				<img src={cross_button}/>
+			</div>
 			<table>
 				<tr>
 					<th>Date</th>
